@@ -1,0 +1,28 @@
+<div class="container mt-5">
+  <h2>Jeu de Hasard 🎲</h2>
+  <p>Devinez le nombre secret (entre 1 et 10) :</p>
+
+  <div class="mb-3">
+    <input type="number" [(ngModel)]="nombreSaisi" class="form-control" placeholder="Entrez un nombre"
+      [disabled]="jeuTermine || tentatives >= maxTentatives" />
+  </div>
+
+  <div class="mb-3">
+    <button class="btn btn-primary" (click)="verifierNombre()" [disabled]="jeuTermine || tentatives >= maxTentatives">
+      Vérifier
+    </button>
+  </div>
+
+  <p *ngIf="message">
+    <span *ngIf="message.includes('supérieur')" class="text-danger">🔺 {{ message }}</span>
+    <span *ngIf="message.includes('inférieur')" class="text-warning">🔻 {{ message }}</span>
+    <span *ngIf="message.includes('Bravo')" class="text-success">🎉 {{ message }}</span>
+    <span *ngIf="message.includes('atteint le nombre maximal')" class="text-danger">⚠️ {{ message }}</span>
+  </p>
+
+  <p>Tentatives : <span class="badge bg-info">{{ tentatives }} / {{ maxTentatives }}</span></p>
+
+  <div *ngIf="jeuTermine" class="mt-3">
+    <button class="btn btn-outline-success" (click)="recommencer()">🔄 Recommencer</button>
+  </div>
+</div>

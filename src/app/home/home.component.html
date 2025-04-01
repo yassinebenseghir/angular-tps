@@ -1,0 +1,44 @@
+<!-- Header -->
+<app-header></app-header>
+
+<div class="container mt-5">
+  <h1 class="text-center">{{ title }}</h1>
+
+  <!-- Affichage de la liste -->
+  <ul class="list-group mt-4">
+    <li class="list-group-item" *ngFor="let item of tab">{{ item }}</li>
+  </ul>
+
+  <p class="mt-3">{{ direBonjour() }}</p>
+
+  <!-- Zone de saisie -->
+  <div class="form-group mt-3">
+    <label for="valeur1">Afficher la valeur dans un champ input</label>
+    <input id="valeur1" type="text" class="form-control" [value]="10" disabled />
+  </div>
+
+  <div class="mt-4">
+    <label for="nom">Saisir votre nom</label>
+    <input id="nom" type="text" class="form-control" [(ngModel)]="val" />
+    <p class="mt-2">Valeur actuelle : {{ val }}</p>
+  </div>
+
+  <div class="mt-4">
+    <button class="btn btn-primary" (click)="AfficherAlert()">Clique</button>
+    <br />
+    <br />
+    <button class="btn btn-secondary" (mouseenter)="AfficherAlert()">Souris event</button>
+  </div>
+
+  <h1>Les directives</h1>
+  <app-directivesexamples></app-directivesexamples>
+
+  <app-jeu></app-jeu>
+
+  <h1>Les Pipes</h1>
+  <app-pipe-example></app-pipe-example>
+  <app-forms></app-forms>
+</div>
+
+<!-- Footer -->
+<app-footer></app-footer>

@@ -1,0 +1,74 @@
+<div class="container mt-5">
+  <p>directivesexamples works!</p>
+
+  <div>
+    <ul>
+      <li *ngFor="let number of tab">
+        <span *ngIf="number % 2 === 0">le nombre {{ number }} est pair</span>
+        <span *ngIf="number % 2 !== 0">le nombre {{ number }} est impair</span>
+      </li>
+    </ul>
+
+    <hr>
+
+    <h2>Premier élément du tableau using ngFor</h2>
+    <ul>
+      <li *ngIf="tab[0] % 2 !== 0; else sinon">
+        {{ tab[0] }} est impair
+      </li>
+      <li *ngFor="let elt of tab; let i = index; let isFirst = first">
+        {{i}} : {{elt}} : {{isFirst}}
+      </li>
+      <ng-template #sinon>
+        <li>{{ tab[0] }} est pair</li>
+      </ng-template>
+      Affichage du tableau :
+      <li *ngFor="let elt of tab">
+        {{elt}}
+      </li>
+    </ul>
+
+    <h2>Trying ngSwitch</h2>
+    <ul>
+      <ng-container *ngFor="let elt of moyennes">
+        <ng-container [ngSwitch]="true">
+          <li *ngSwitchCase="elt >= 0 && elt < 10">Non Valide : échec</li>
+          <li *ngSwitchCase="elt >= 10 && elt < 12">Valide : Moyen</li>
+          <li *ngSwitchCase="elt >= 12 && elt < 14">Valide : Assez bien</li>
+          <li *ngSwitchCase="elt >= 14 && elt < 16">Valide : Bien</li>
+          <li *ngSwitchDefault>Valide : Très bien</li>
+        </ng-container>
+      </ng-container>
+    </ul>
+
+    <div>
+      <h3>Directives d'attribut</h3>
+
+      <span class="d-block mb-2" [class.red]="true">Attribut prend la couleur rouge</span>
+      <span class="d-block mb-2" [ngClass]="{'blue': true}">Attribut Change couleur en utilisant NgClass</span>
+      <span class="d-block mb-2" [ngStyle]="{'font-size': '14px', 'color': 'green'}">
+        Attribut change Style en utilisant NgStyle
+      </span>
+
+      <br /><br />
+
+      <span class="d-block mb-2" [class.cyan]="AfficheColor">
+        Attribut prend la couleur en utilisant la variable afficheColor
+      </span>
+      <span class="d-block mb-2" [ngClass]="{'brown': AfficheColor}">
+        Attribut Change couleur en utilisant NgClass
+      </span><br />
+
+      <input type="button" value="Changer Couleur" (click)="changeColor()" class="btn btn-primary mt-2" />
+
+      <br /><br />
+
+      <span class="d-block mb-2" [class.cyan]="AfficheColor">
+        Attribut Change couleur via la variable afficheColor
+      </span><br />
+      <span class="d-block mb-2" [ngClass]="{'cyan': AfficheColor, 'red': AfficheColor}">
+        Attribut Change couleur en utilisant NgClass
+      </span><br />
+    </div>
+  </div>
+</div>

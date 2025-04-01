@@ -1,0 +1,45 @@
+<h2 class="mb-4">Reactive Form</h2>
+
+<form [formGroup]="loginForm" (ngSubmit)="enregistrerUtilisateur()">
+  <div class="container">
+    <div class="row mb-3">
+      <label for="username" class="col-sm-2 col-form-label">User Name</label>
+      <div class="col-sm-10">
+        <input type="text" id="username" formControlName="username" class="form-control">
+        <div *ngIf="username.invalid && username.touched" class="text-danger mt-2">
+          <div *ngIf="username.hasError('minlength')">
+            Username must be at least 5 characters long.
+          </div>
+          <div *ngIf="username.hasError('required')">
+            Username is required.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <label for="password" class="col-sm-2 col-form-label">Password</label>
+      <div class="col-sm-10">
+        <input type="password" id="password" formControlName="password" class="form-control">
+        <div *ngIf="password.invalid && password.touched" class="text-danger mt-2">
+          <div *ngIf="password.hasError('required')">
+            The password is required.
+          </div>
+          <div *ngIf="password.hasError('needsExclamation')">
+            Your password must contain an exclamation mark (!).
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-sm-12 text-left">
+        <button type="submit" [disabled]="!loginForm.valid" class="btn btn-primary">Register</button>
+      </div>
+    </div>
+  </div>
+</form>
+
+<div *ngIf="affichageMessage" class="mt-4">
+  <p class="text-left">Thanks, <strong>{{ formData.username }}</strong> for your registration!</p>
+</div>
