@@ -1,25 +1,50 @@
 import { Component, OnInit } from '@angular/core';
-import { EtudiantService } from '../etudiant.service'; // Importer le service
+import { EtudiantService } from '../etudiant.service';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { NgFor } from '@angular/common';
+
 
 @Component({
   selector: 'app-etudiant',
+  imports: [FormsModule,CommonModule,NgFor ],
   templateUrl: './etudiant.component.html',
   styleUrls: ['./etudiant.component.css']
 })
 export class EtudiantComponent implements OnInit {
-  // Déclarer un tableau d'étudiants pour stocker les données récupérées du service
   etudiants: Array<any> = [];
 
-  constructor(private etudiantService: EtudiantService) { } // Injecter le service
+
+  newEtudiant = {
+    nom: '',
+    age: null,
+    ville: ''
+  };
+
+  constructor(private etudiantService: EtudiantService) { }
 
   ngOnInit(): void {
-    // Récupérer les données des étudiants au moment de l'initialisation du composant
     this.etudiants = this.etudiantService.getEtudiantData();
   }
 
-  // Méthode pour ajouter un étudiant
-  addEtudiant(newEtudiant: any): void {
-    this.etudiantService.ajouterEtudiantData(newEtudiant);
-    this.etudiants = this.etudiantService.getEtudiantData(); // Actualiser la liste après l'ajout
+  addEtudiant(etudiant: any): void {
+    // Create a copy of the object to avoid reference issues
+    const etudiantToAdd = {
+      nom: etudiant.nom,
+      age: etudiant.age,
+      ville: etudiant.ville
+    };
+
+    this.etudiantService.ajouterEtudiantData(etudiantToAdd);
+    this.etudiants = this.etudiantService.getEtudiantData();
+  }
+
+  resetForm(): void {
+
+    this.newEtudiant = {
+      nom: '',
+      age: null,
+      ville: ''
+    };
   }
 }

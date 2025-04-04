@@ -10,10 +10,11 @@ import { FormsComponent } from '../forms/forms.component';
 import { EtudiantComponent } from '../etudiant/etudiant.component';
 import { HeaderComponent } from '../header/header.component';
 import { FooterComponent } from '../footer/footer.component';
+import {CalculatriceComponent} from '../calculatrice/calculatrice.component'
 
 @Component({
   selector: 'app-home',
-  imports:[RouterOutlet, FormsModule,NgFor, DirectivesexamplesComponent,JeuComponent,PipeExampleComponent,FormsComponent,EtudiantComponent,HeaderComponent,FooterComponent],
+  imports:[RouterOutlet, FormsModule,NgFor, DirectivesexamplesComponent,JeuComponent,PipeExampleComponent,FormsComponent,EtudiantComponent,HeaderComponent,FooterComponent,CalculatriceComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })

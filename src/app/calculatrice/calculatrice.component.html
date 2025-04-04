@@ -1,0 +1,32 @@
+<div class="container text-center mt-4">
+  <h3>Calculatrice</h3>
+  <input type="text" class="form-control text-end mb-2" [value]="display" readonly>
+
+  <div class="row">
+    <button class="btn btn-light col-3" (click)="appendNumber('7')">7</button>
+    <button class="btn btn-light col-3" (click)="appendNumber('8')">8</button>
+    <button class="btn btn-light col-3" (click)="appendNumber('9')">9</button>
+    <button class="btn btn-warning col-3" (click)="appendNumber('+')">+</button>
+  </div>
+
+  <div class="row">
+    <button class="btn btn-light col-3" (click)="appendNumber('4')">4</button>
+    <button class="btn btn-light col-3" (click)="appendNumber('5')">5</button>
+    <button class="btn btn-light col-3" (click)="appendNumber('6')">6</button>
+    <button class="btn btn-warning col-3" (click)="appendNumber('-')">-</button>
+  </div>
+
+  <div class="row">
+    <button class="btn btn-light col-3" (click)="appendNumber('1')">1</button>
+    <button class="btn btn-light col-3" (click)="appendNumber('2')">2</button>
+    <button class="btn btn-light col-3" (click)="appendNumber('3')">3</button>
+    <button class="btn btn-warning col-3" (click)="appendNumber('*')">×</button>
+  </div>
+
+  <div class="row">
+    <button class="btn btn-danger col-3" (click)="clear()">C</button>
+    <button class="btn btn-light col-3" (click)="appendNumber('0')">0</button>
+    <button class="btn btn-success col-3" (click)="calculate()">=</button>
+    <button class="btn btn-warning col-3" (click)="appendNumber('/')">÷</button>
+  </div>
+</div>
